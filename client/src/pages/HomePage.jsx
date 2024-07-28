@@ -1,9 +1,13 @@
-import React from "react";
+import Wordle from "./Wordle";
 
 const HomePage = () => {
   return (
     <>
-      <div>HomePage</div>
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-center">
+          <Wordle />
+        </div>
+      </div>
     </>
   );
 };
