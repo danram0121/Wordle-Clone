@@ -7,11 +7,9 @@ const BoardRow = (prop) => {
   return (
     <>
       <div className="flex flex-row gap-1.5">
-        <Tile letter={prop.guess[0]} />
-        <Tile letter={prop.guess[1]} />
-        <Tile letter={prop.guess[2]} />
-        <Tile letter={prop.guess[3]} />
-        <Tile letter={prop.guess[4]} />
+        {prop.guess.map((letter, index) => (
+          <Tile letter={letter} key={index} />
+        ))}
       </div>
     </>
   );
