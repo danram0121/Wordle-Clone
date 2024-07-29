@@ -5,7 +5,7 @@ import StartButton from "../components/StartButton";
 const HomePage = () => {
   return (
     <>
-      <div className="flex flex-col justify-center items-center xxsm:mt-40 xsm:mt-60">
+      <div className="flex flex-col justify-center items-center xxsm:mt-40 xsm:mt-60 gap-3">
         <Hero />
         <StartButton />
         <DateSection />
