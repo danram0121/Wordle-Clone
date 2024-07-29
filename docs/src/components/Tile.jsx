@@ -3,7 +3,7 @@ import { GameStateContext } from "../context/GameStateContext";
 
 const theme = {
   empty: "border-2 border-gray-300",
-  pending: "border-2 border-[#787c7e]",
+  pending: "border-2 border-[#787c7e] transition-all duration-300",
   absent: "bg-[#787c7e] text-white",
   present: "bg-[#c9b458] text-white",
   correct: "bg-[#58a351] text-white",
