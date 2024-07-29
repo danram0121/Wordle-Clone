@@ -5,7 +5,7 @@ import EnterKey from "./EnterKey";
 const KeyBoard = () => {
   return (
     <>
-      <div className="flex flex-col items-center gap-y-2">
+      <div className="flex flex-col items-center sm:gap-y-2 xxsm:gap-1 keyboard">
         <div className="row-1 flex gap-x-3 w-full">
           <Key letter="Q" state="" />
           <Key letter="W" state="" />

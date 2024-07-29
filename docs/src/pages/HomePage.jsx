@@ -5,9 +5,11 @@ import StartButton from "../components/StartButton";
 const HomePage = () => {
   return (
     <>
-      <Hero />
-      <StartButton />
-      <DateSection />
+      <div className="flex flex-col justify-center items-center xxsm:mt-40 xsm:mt-60">
+        <Hero />
+        <StartButton />
+        <DateSection />
+      </div>
     </>
   );
 };

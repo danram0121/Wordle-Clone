@@ -4,8 +4,12 @@ import Navbar from "../components/Navbar";
 const MainLayout = () => {
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <div className="h-screen overflow-hidden">
+        <Navbar />
+        <div className="h-screen">
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 };

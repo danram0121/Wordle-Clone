@@ -24,7 +24,7 @@ const Tile = ({ value, index, state }) => {
   return (
     <>
       <div
-        className={`flex size-[62px] items-center justify-center text-3xl font-bold ${tileState}`}
+        className={`flex sm:size-[62px] xxsm:size-12 items-center justify-center text-3xl font-bold ${tileState}`}
       >
         {value}
       </div>

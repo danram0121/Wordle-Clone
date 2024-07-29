@@ -4,7 +4,7 @@ import KeyBoard from "../components/KeyBoard";
 const Wordle = () => {
   return (
     <>
-      <div className="flex flex-col gap-6 mt-8 items-center">
+      <div className="flex flex-col gap-6 mt-8 items-center h-full">
         <Game />
         <KeyBoard />
       </div>
