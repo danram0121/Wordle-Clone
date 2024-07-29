@@ -7,7 +7,7 @@ const Hero = () => {
             <h1 className="text-4xl font-extrabold  sm:text-5xl md:text-6xl">
               Welcome
             </h1>
-            <p className="text-4xl">Keep it up!</p>
+            <p className="text-4xl">Good luck!</p>
           </div>
         </div>
       </section>
