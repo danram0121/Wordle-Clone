@@ -5,8 +5,8 @@ import EnterKey from "./EnterKey";
 const KeyBoard = () => {
   return (
     <>
-      <div className="flex flex-col items-center sm:gap-y-2 xxsm:gap-1 keyboard">
-        <div className="row-1 flex gap-x-3 w-full">
+      <div className="flex flex-col items-center sm:gap-y-2 xxsm:gap-1 keyboard xxsm:w-screen sm:w-[540px] xsm:w-[400px]">
+        <div className="row-1 flex w-full justify-around gap-1">
           <Key letter="Q" state="" />
           <Key letter="W" state="" />
           <Key letter="E" state="" />
@@ -18,7 +18,7 @@ const KeyBoard = () => {
           <Key letter="O" state="" />
           <Key letter="P" state="" />
         </div>
-        <div className="row-2 flex justify-center gap-x-3 w-full">
+        <div className="row-2 flex w-full justify-around gap-1 px-6">
           <Key letter="A" state="" />
           <Key letter="S" state="" />
           <Key letter="D" state="" />
@@ -29,7 +29,7 @@ const KeyBoard = () => {
           <Key letter="K" state="" />
           <Key letter="L" state="" />
         </div>
-        <div className="row-3 flex gap-x-3 justify-around w-full">
+        <div className="row-3 flex justify-around w-full gap-1">
           <EnterKey state="" />
           <Key letter="Z" state="" />
           <Key letter="X" state="" />
