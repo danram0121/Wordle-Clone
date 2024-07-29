@@ -10,23 +10,26 @@ const theme = {
     "bg-[#58a351] text-white hover:bg-[rgb(88,168,81,0.85)] hover:border-[#58a351] hover:border-2",
 };
 
-const Key = ({ letter, state }) => {
+const Key = ({ letter }) => {
   const { currentState, updateGameState } = useContext(GameStateContext);
-  const keyWord = currentState.word;
-  const currentGuesses = currentState.boardState.slice(
-    0,
-    currentState.currentRowIndex
-  );
+  const { word, boardState, currentRowIndex } = currentState;
 
   const tileState = useMemo(() => {
-    if (currentGuesses.toString().includes(letter) && !keyWord.includes(letter))
-      // if letter is in current guesses but not in keyword
-      return theme.absent;
-    if (currentGuesses.toString().includes(letter) && keyWord.includes(letter))
-      // if letter is in current guesses and in keyword
-      return theme.correct;
+    const pastGuesses = boardState.slice(0, currentRowIndex);
+
+    const isCorrect = pastGuesses.some(
+      (guess, rowIndex) => guess[word.indexOf(letter)] === letter
+    );
+
+    if (isCorrect) return theme.correct;
+
+    const isAbsent = pastGuesses.some(
+      (guess) => guess.includes(letter) && !word.includes(letter)
+    );
+    if (isAbsent) return theme.absent;
+
     return theme.empty;
-  }, [letter, state]);
+  }, [letter, word, boardState, currentRowIndex]);
 
   const handleClick = (e) => {
     e.preventDefault();
