@@ -1,3 +1,4 @@
+import { wordDict } from "../lib/wordleDictionary";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameStateContext } from "../context/GameStateContext";
@@ -16,6 +17,11 @@ const EnterKey = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
+
+    // if the word is not in the dictionary
+    if (!wordDict.includes(currentGuess.toLowerCase())) {
+      return;
+    }
 
     updateGameState((prevState) => {
       const currentRowIndex = prevState.currentRowIndex;
