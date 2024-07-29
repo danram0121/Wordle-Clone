@@ -1,4 +1,5 @@
 import { Words } from "../lib/wordleList";
+import { Easy } from "../lib/easyList";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { GameStateContext } from "../context/GameStateContext";
@@ -6,7 +7,7 @@ import { GameStateContext } from "../context/GameStateContext";
 const StartButton = () => {
   const { updateGameState } = useContext(GameStateContext);
   const [word, setWord] = useState(
-    Words[Math.floor(Math.random() * Words.length)].toUpperCase()
+    Easy[Math.floor(Math.random() * Easy.length)].toUpperCase()
   );
 
   const navigate = useNavigate();
