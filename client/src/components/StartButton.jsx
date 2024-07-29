@@ -1,15 +1,19 @@
+import { Words } from "../lib/wordleList";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { GameStateContext } from "../context/GameStateContext";
 
 const StartButton = () => {
   const { updateGameState } = useContext(GameStateContext);
+  const [word, setWord] = useState(
+    Words[Math.floor(Math.random() * Words.length)].toUpperCase()
+  );
 
   const navigate = useNavigate();
   const gameState = {
     boardState: ["", "", "", "", "", ""],
     currentRowIndex: 0,
-    word: "SLAIN",
+    word: word,
     puzzleId: "1",
     legacyStats: {
       currentStreak: 0,
