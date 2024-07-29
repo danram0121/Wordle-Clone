@@ -19,7 +19,7 @@ const DateSection = () => {
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
-  console.log(day, month, year);
+
   return (
     <>
       <section className="">
