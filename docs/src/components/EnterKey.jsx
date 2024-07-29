@@ -1,57 +1,55 @@
 import { wordDict } from "../lib/wordleDictionary";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameStateContext } from "../context/GameStateContext";
 import Confetti from "react-confetti";
 
 const EnterKey = () => {
-  const [winState, setWinState] = useState("");
-  const [loseState, setLoseState] = useState("");
+  const [gameOver, setGameOver] = useState(false);
+  const [winState, setWinState] = useState(false);
+  const [loseState, setLoseState] = useState(false);
   const { currentState, updateGameState } = useContext(GameStateContext);
-  const rowIndex = currentState.currentRowIndex;
-  const currentGuess = currentState.boardState[rowIndex];
-  const rowLength = currentState.boardState[rowIndex].length;
-  const win = currentGuess === currentState.word;
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (gameOver) {
+      const timeout = setTimeout(
+        () => {
+          navigate("/");
+        },
+        winState ? 8000 : 3000
+      );
+
+      return () => clearTimeout(timeout);
+    }
+  }, [gameOver, winState, navigate]);
 
   const handleClick = (e) => {
     e.preventDefault();
 
+    const rowIndex = currentState.currentRowIndex;
+    const currentGuess = currentState.boardState[rowIndex];
+    const rowLength = currentGuess.length;
+    const win = currentGuess === currentState.word;
+
     // if the word is not in the dictionary
-    if (!wordDict.includes(currentGuess.toLowerCase())) {
+    if (!wordDict.includes(currentGuess.toLowerCase()) || rowLength !== 5) {
       return;
     }
 
     updateGameState((prevState) => {
-      const currentRowIndex = prevState.currentRowIndex;
-
-      // Check if the current row is less than 5 and the row length is 5
-      if (currentRowIndex < 5 && rowLength === 5) {
-        if (win) {
-          // Win condition
-          setWinState(true);
-          setTimeout(() => {
-            navigate("/");
-          }, 8000);
-        }
-        return {
-          ...prevState,
-          currentRowIndex: currentRowIndex + 1,
-        };
-      }
-
-      if (currentRowIndex === 5) {
-        // Game Over no more guesses remaining loss condition
-        setLoseState(true);
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
-      }
-
-      return {
+      const newState = {
         ...prevState,
+        currentRowIndex: prevState.currentRowIndex + 1,
       };
+
+      if (win || prevState.currentRowIndex === 5) {
+        setGameOver(true);
+        setWinState(win);
+        setLoseState(!win);
+      }
+
+      return newState;
     });
   };
 
