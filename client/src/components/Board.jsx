@@ -1,21 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GameStateContext } from "../context/GameStateContext";
 import BoardRow from "./BoardRow";
 
 const Board = () => {
-  const guesses = [
-    ["Q", "U", "E", "E", "N"],
-    ["S", "O", "R", "R", "Y"],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-    ["", "", "", "", ""],
-  ];
-
+  const { currentState } = useContext(GameStateContext);
+  const guesses = currentState.boardState;
   return (
     <>
       <div className="flex flex-col gap-1.5">
         {guesses.map((guess, index) => (
-          <BoardRow guess={guess} key={index} />
+          <BoardRow guess={guess} index={index} key={index} />
         ))}
       </div>
     </>
