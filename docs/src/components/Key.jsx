@@ -6,6 +6,8 @@ const theme = {
     "bg-gray-200 border-2 border-white hover:bg-transparent hover:border-gray-200",
   absent:
     "bg-[#787c7e] text-white hover:bg-[rgb(120,124,126,0.85)] hover:border-[#787c7e] hover:border-2",
+  present:
+    "bg-[#c9b458] text-white hover:bg-[rgb(201,180,88,0.85)] hover:border-[#c9b458] hover:border-2",
   correct:
     "bg-[#58a351] text-white hover:bg-[rgb(88,168,81,0.85)] hover:border-[#58a351] hover:border-2",
 };
@@ -20,8 +22,12 @@ const Key = ({ letter }) => {
     const isCorrect = pastGuesses.some(
       (guess, rowIndex) => guess[word.indexOf(letter)] === letter
     );
-
     if (isCorrect) return theme.correct;
+
+    const isPresent = pastGuesses.some(
+      (guess) => guess.includes(letter) && word.includes(letter)
+    );
+    if (isPresent) return theme.present;
 
     const isAbsent = pastGuesses.some(
       (guess) => guess.includes(letter) && !word.includes(letter)
