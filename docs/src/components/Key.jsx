@@ -61,7 +61,7 @@ const Key = ({ letter }) => {
   return (
     <>
       <button
-        className={`flex font-bold sm:h-14  xxsm:text-xs xxsm:h-10 items-center justify-center rounded-md border grow border-white hover:bg-transparent hover:border-gray-200 ${tileState}`}
+        className={`flex font-bold sm:h-14  xxsm:text-xs xxsm:h-10 items-center justify-center rounded-md border grow border-white hover:bg-transparent hover:border-gray-200 ${tileState} xxsm:active:scale-120 sm:active:scale-105`}
         onClick={handleClick}
       >
         {letter}

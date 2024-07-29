@@ -59,7 +59,7 @@ const EnterKey = () => {
     <>
       {winState ? <Confetti /> : null}
       <button
-        className="flex font-bold xxsm:text-xs sm:h-14 xxsm:h-10 items-center justify-center bg-gray-200 rounded-md grow border border-white hover:bg-transparent hover:border-gray-200"
+        className="flex font-bold xxsm:text-xs sm:h-14 xxsm:h-10 items-center justify-center bg-gray-200 rounded-md grow border border-white hover:bg-transparent hover:border-gray-200  active:scale-105"
         onClick={handleClick}
       >
         Enter
