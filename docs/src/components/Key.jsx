@@ -13,7 +13,7 @@ const theme = {
 };
 
 const Key = ({ letter }) => {
-  const { currentState, updateGameState } = useContext(GameStateContext);
+  const { currentState, handleKeyInput } = useContext(GameStateContext);
   const { word, boardState, currentRowIndex } = currentState;
 
   const tileState = useMemo(() => {
@@ -37,32 +37,11 @@ const Key = ({ letter }) => {
     return theme.empty;
   }, [letter, word, boardState, currentRowIndex]);
 
-  const handleClick = (e) => {
-    e.preventDefault();
-
-    updateGameState((prevState) => {
-      const currentRowIndex = prevState.currentRowIndex;
-      const currentRowContent = prevState.boardState[currentRowIndex];
-
-      if (currentRowContent.length < 5) {
-        const newBoardState = [...prevState.boardState];
-        newBoardState[currentRowIndex] = currentRowContent + letter;
-
-        return {
-          ...prevState,
-          boardState: newBoardState,
-        };
-      }
-      return {
-        ...prevState,
-      };
-    });
-  };
   return (
     <>
       <button
         className={`flex font-bold sm:h-14  xxsm:text-xs xxsm:h-12 items-center justify-center rounded-md border grow border-white hover:bg-transparent hover:border-gray-200 ${tileState} xxsm:active:scale-120 sm:active:scale-105`}
-        onClick={handleClick}
+        onClick={() => handleKeyInput(letter)}
       >
         {letter}
       </button>
